@@ -1,5 +1,7 @@
 from features.pages.BasePageClass import BasePage
 from features.pages.locators import MainPageLocators
+from selenium.common.exceptions import StaleElementReferenceException
+import time
 
 
 class MainPage(BasePage):
@@ -9,11 +11,6 @@ class MainPage(BasePage):
 
     def load_page(self):
         BasePage.load_page(self, 'https://www.ryanair.com/ie/en')
-
-    def accept_all_cookies(self):
-        if self.get_element_by_css(MainPageLocators.COOKIE_POPUP) is not None:
-            btn_accept_cookies = self.get_element_by_css(MainPageLocators.ACCEPT_ALL_COOKIES)
-            btn_accept_cookies.click()
 
     def select_trip_type(self, round_trip=True):
         if round_trip:
@@ -43,24 +40,16 @@ class MainPage(BasePage):
         clear_selection_button.click()
 
     def select_country(self, country, origin=True):
-        locator = self.get_location_selector(origin)
-        self.wait_for_css_element(locator)
+        self.wait_for_css_element(MainPageLocators.FLIGHT_COUNTRIES_CONTAINER)
         selected_country = [x for x in self.get_elements_by_css(MainPageLocators.FLIGHT_COUNTRIES)
                             if str(x.text).upper() in str(country).upper()][0]
         selected_country.click()
 
     def select_airport(self, airport, origin=True):
-        locator = self.get_location_selector(origin)
-        self.wait_for_css_element(locator)
+        self.wait_for_css_element(MainPageLocators.FLIGHT_AIRPORTS_CONTAINER)
         selected_airport = [x for x in self.get_elements_by_css(MainPageLocators.FLIGHT_AIRPORTS)
                             if str(x.text).upper() in str(airport).upper()][0]
         selected_airport.click()
-
-    # def set_country_and_airport(self, country, airport, origin=True):
-    #     self.show_destinations(origin=origin)
-    #     self.clear_destination_selection()
-    #     self.select_country(country=country, origin=origin)
-    #     self.select_airport(airport=airport, origin=origin)
 
     def get_departure_selector(self, departure=True):
         if departure:
@@ -75,4 +64,9 @@ class MainPage(BasePage):
 
     def set_date(self, date, departure=True):
         self.open_calendar(departure=departure)
-        self.get_element_by_css(MainPageLocators.DEPARTURE_CALENDAR_DATE.format(date)).click()
+        locator = MainPageLocators.DEPARTURE_CALENDAR_DATE.format(date)
+        self.wait_for_element_clickable(locator)
+        self.get_element_by_css(locator).click()
+
+    def search_flight(self):
+        self.get_element_by_css(MainPageLocators.SEARCH_BUTTON).click()
