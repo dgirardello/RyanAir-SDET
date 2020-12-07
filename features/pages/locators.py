@@ -1,9 +1,11 @@
 class BasePageLocators:
     COOKIE_POPUP = "div[id='cookie-popup-with-overlay']"
-    COOKIE_POPUP_ID = "cookie-popup"
-    ACCEPT_ALL_COOKIES = "button[data-ref='cookie.accept-all']"
+
+
 
 class MainPageLocators:
+    COOKIE_POPUP = "div[id='cookie-popup-with-overlay']"
+    ACCEPT_ALL_COOKIES = "button[data-ref='cookie.accept-all']"
     RETURN_TRIP = "fsw-trip-type-button[data-ref='flight-search-trip-type__return-trip']"
     SINGLE_TRIP = "fsw-trip-type-button[data-ref='flight-search-trip-type__one-way-trip']"
     TEXTBOX_DEPARTURE_ID = "input-button__departure"
@@ -22,11 +24,23 @@ class MainPageLocators:
 
 
 class TripPageLocators:
-    DATE_CAROUSEL_CONTAINER = "div.header__carousel.ng-trigger.ng-trigger-flightCardAnimate"
-    FLIGHT_LIST_CONTAINER = "flight-list"
-    FLIGHT_LIST_ITEMS = "flight-card"
-    FARE_TABLE_CONTAINER = "fare-table-container"
-    FARE_CARD_STANDARD = "div-fare-card[data-e2e='fare-card--standard']"
-    FARE_CARD_REGULAR = "div-fare-card[data-e2e='fare-card--regular']"
-    FARE_CARD_PLUS = "div-fare-card[data-e2e='fare-card--plus']"
-    FARE_CARD_FLEXI = "div-fare-card[data-e2e='fare-card--flexi']"
+    COOKIE_POPUP_ID = "cookie-popup"
+    ACCEPT_ALL_COOKIES = "button[data-ref='cookie.accept-all']"
+    SHOPPING_CART_AMOUNT = "ry-price"
+    SHOPPING_CART_AMOUNT_SYMBOL = "span.price__symbol"
+    SHOPPING_CART_AMOUNT_INT = "span.price__integers"
+    SHOPPING_CART_AMOUNT_DEC = "span.price__decimals"
+
+    class SectionFlights:
+        DATE_CAROUSEL_CONTAINER = "div.header__carousel.ng-trigger.ng-trigger-flightCardAnimate"
+        FLIGHT_LIST_CONTAINER = "flight-list"
+        FLIGHT_LIST_ITEMS = "flight-card"
+        FARE_TABLE_CONTAINER = "fare-table-container"
+        FARE_CARD_STANDARD = "div.fare-card[data-e2e='fare-card--standard']"
+        FARE_CARD_REGULAR = "div.fare-card[data-e2e='fare-card--regular']"
+        FARE_CARD_PLUS = "div.fare-card[data-e2e='fare-card--plus']"
+        FARE_CARD_FLEXI = "div.fare-card[data-e2e='fare-card--flexi']"
+        LOGIN_BOX = "ry-login-touchpoint-container"
+        LOGIN_BOX_LOGIN_LATER_LINK = "span.login-touchpoint__login-later.h3"
+
+

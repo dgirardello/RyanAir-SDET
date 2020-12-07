@@ -1,8 +1,7 @@
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from features.pages.locators import BasePageLocators
 
 
 class BasePage:
@@ -50,14 +49,8 @@ class BasePage:
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
 
+
     def wait_for_element_clickable(self, locator, timeout=60):
         WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, locator)))
 
-    def accept_all_cookies(self):
-        if self.get_element_by_css(BasePageLocators.COOKIE_POPUP) is not None:
-            btn_accept_cookies = self.get_element_by_css(BasePageLocators.ACCEPT_ALL_COOKIES)
-            btn_accept_cookies.click()
-        elif self.get_element_by_id(BasePageLocators.COOKIE_POPUP_ID) is not None:
-            btn_accept_cookies = self.get_element_by_css(BasePageLocators.ACCEPT_ALL_COOKIES)
-            btn_accept_cookies.click()

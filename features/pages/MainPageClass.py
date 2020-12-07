@@ -12,6 +12,11 @@ class MainPage(BasePage):
     def load_page(self):
         BasePage.load_page(self, 'https://www.ryanair.com/ie/en')
 
+    def accept_all_cookies(self):
+        if self.get_element_by_css(MainPageLocators.COOKIE_POPUP) is not None:
+            btn_accept_cookies = self.get_element_by_css(MainPageLocators.ACCEPT_ALL_COOKIES)
+            btn_accept_cookies.click()
+
     def select_trip_type(self, round_trip=True):
         if round_trip:
             btn_trip_type = self.get_element_by_css(MainPageLocators.RETURN_TRIP)

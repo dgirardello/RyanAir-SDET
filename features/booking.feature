@@ -18,7 +18,7 @@ Feature: Execute a booking
 
   @flight_select @test
   Scenario: Select a flight and check that is added to the shop cart
-    Given I'm in the Tip page of a flight search with
+    Given I'm in the Tip page Flight section with a flight search with
           | PARAMETER   | VALUE             |
           | ORIGIN      | DUB               |
           | DESTINATION | BCN               |
@@ -28,5 +28,5 @@ Feature: Execute a booking
     And   I accept all the cookies if the Cookies Popup is shown
     When  I select the first flight available
     And   I select the "Flexi Plus" fare
-#    Then  The flight is added to the shopping cart
-#    And   The total amount is shown
+    Then  The total amount beside the shopping cart is greater than 0
+    And   The Login sub-section is shown

@@ -37,28 +37,19 @@ class TripPage(BasePage):
         self.wait_for_css_element(TripPageLocators.DATE_CAROUSEL_CONTAINER, timeout=timeout)
         self.wait_for_css_element(TripPageLocators.FLIGHT_LIST_CONTAINER, timeout=timeout)
 
-    def get_flights(self):
-        return self.get_elements_by_css(TripPageLocators.FLIGHT_LIST_ITEMS)
+    def accept_all_cookies(self):
+        if self.get_element_by_id(TripPageLocators.COOKIE_POPUP_ID) is not None:
+            btn_accept_cookies = self.get_element_by_css(TripPageLocators.ACCEPT_ALL_COOKIES)
+            btn_accept_cookies.click()
 
-    def select_first_flight(self):
-        flight_cards = self.get_elements_by_css(TripPageLocators.FLIGHT_LIST_ITEMS)
-        flight_cards[0].click()
+    def get_shopping_amount(self):
+        int_part = self.get_element_by_css(TripPageLocators.SHOPPING_CART_AMOUNT_INT).text
+        dec_part = self.get_element_by_css(TripPageLocators.SHOPPING_CART_AMOUNT_DEC).text
+        return float(".".join([int_part, dec_part]))
 
-    def get_fare_card(self, fare):
-        if str(fare).upper() in ['REGULAR']:
-            locator = TripPageLocators.FARE_CARD_REGULAR
-        elif str(fare).upper() in ['PLUS']:
-            locator = TripPageLocators.FARE_CARD_PLUS
-        elif str(fare).upper() in ['FLEXI PLUS']:
-            locator = TripPageLocators.FARE_CARD_FLEXI
-        else:
-            locator = TripPageLocators.FARE_CARD_STANDARD
 
-        self.wait_for_css_element(locator)
-        return self.get_elements_by_css(locator)
 
-    def select_flight_fare(self, fare):
-        fare_card = self.get_fare_card(fare)
-        fare_card_button = self.get_element_by_css('button', within_element=fare_card)
-        fare_card_button.click()
-        pass
+
+
+
+
