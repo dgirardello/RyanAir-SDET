@@ -46,13 +46,13 @@ class MainPage(BasePage):
 
     def select_country(self, country, origin=True):
         self.wait_for_css_element(MainPageLocators.FLIGHT_COUNTRIES_CONTAINER)
-        selected_country = [x for x in self.get_elements_by_css(MainPageLocators.FLIGHT_COUNTRIES)
+        selected_country = [x for x in self.get_element_list_by_css(MainPageLocators.FLIGHT_COUNTRIES)
                             if str(x.text).upper() in str(country).upper()][0]
         selected_country.click()
 
     def select_airport(self, airport, origin=True):
         self.wait_for_css_element(MainPageLocators.FLIGHT_AIRPORTS_CONTAINER)
-        selected_airport = [x for x in self.get_elements_by_css(MainPageLocators.FLIGHT_AIRPORTS)
+        selected_airport = [x for x in self.get_element_list_by_css(MainPageLocators.FLIGHT_AIRPORTS)
                             if str(x.text).upper() in str(airport).upper()][0]
         selected_airport.click()
 

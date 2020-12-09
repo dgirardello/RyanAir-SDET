@@ -1,6 +1,9 @@
 class BasePageLocators:
-    COOKIE_POPUP = "div[id='cookie-popup-with-overlay']"
-
+    LOGIN_POPUP = "div.dialog.signup-dialog"
+    LOGIN_POPUP_EMAIL = "input[name='email']"
+    LOGIN_POPUP_PASSWORD = "input[name='password']"
+    LOGIN_POPUP_LOGIN_BUTTON = "button.auth-submit__button[type='submit']"
+    PROFILE_AREA = "div.profile-area.ng-star-inserted"
 
 
 class MainPageLocators:
@@ -25,13 +28,17 @@ class MainPageLocators:
 
 class TripPageLocators:
     COOKIE_POPUP_ID = "cookie-popup"
+    COOKIE_POPUP = "div.cookie-popup"
     ACCEPT_ALL_COOKIES = "button[data-ref='cookie.accept-all']"
     SHOPPING_CART_AMOUNT = "ry-price"
     SHOPPING_CART_AMOUNT_SYMBOL = "span.price__symbol"
     SHOPPING_CART_AMOUNT_INT = "span.price__integers"
     SHOPPING_CART_AMOUNT_DEC = "span.price__decimals"
+    SHOPPING_CART_BUTTON = "div.basket-total-icon"
+    SHOPPING_CART_DETAILS_CONTAINER = "ry-price-breakdown-container"
+    SHOPPING_CART_DETAILS_CHECKOUT_BUTTON = "button.ry-button--full.ry-button--gradient-yellow[data-ref='basket-continue-flow__check-out']"
 
-    class SectionFlights:
+    class FlightSelection:
         DATE_CAROUSEL_CONTAINER = "div.header__carousel.ng-trigger.ng-trigger-flightCardAnimate"
         FLIGHT_LIST_CONTAINER = "flight-list"
         FLIGHT_LIST_ITEMS = "flight-card"
@@ -42,5 +49,41 @@ class TripPageLocators:
         FARE_CARD_FLEXI = "div.fare-card[data-e2e='fare-card--flexi']"
         LOGIN_BOX = "ry-login-touchpoint-container"
         LOGIN_BOX_LOGIN_LATER_LINK = "span.login-touchpoint__login-later.h3"
+        LOGIN_BOX_LOGIN_BUTTON = "button[data-ref='login-touchpoint__log_in_button']"
+        PASSENGERS_SECTION_CONTAINER = "div.form-outer-wrapper.ng-star-inserted"
+        PASSENGERS_SECTION_CONTAINER_INNER_DIV = "div.form-wrapper"
+        PASSENGERS_SECTION_SAVED_COMPANION_BUTTON = "div.bubble[role='button']"
+        PASSENGERS_SECTION_TITLE_BOX = "button.dropdown__toggle.b2[type='button']"
+        PASSENGERS_SECTION_FIRST_NAME_BOX = "input[id='formState.passengers.ADT-0.name']"
+        PASSENGERS_SECTION_LAST_NAME_BOX = "input[id='formState.passengers.ADT-0.surname']"
+        PASSENGERS_SECTION_CONTINUE_BUTTON = "button.continue-flow__button.ry-button--gradient-yellow"
+
+    class SeatSelection:
+        SEAT_MAP_CONTAINER = "seat-map"
+        LIST_BUTTON_SEAT_PRIORITY = "button.ng-star-inserted.seatmap__seat.seatmap__seat--priority"
+        LIST_BUTTON_SEAT_STANDARD = "button.ng-star-inserted.seatmap__seat.seatmap__seat--standard"
+        BUTTON_SEAT_SELECTED = "button.ng-star-inserted.seatmap__seat.seatmap__seat--selected"
+        SEAT_TOOLTIP_DESIGNATOR = "div.seat-tooltip__designator"
+        RIGHT_PANEL_SEAT_EMPTY = "div.seat-badge"
+        RIGHT_PANEL_SEAT_SELECTED = "div.seat-badge.seat-badge--seat-selected"
+        BUTTON_CONTINUE = "button.seats-action__button[data-ref='seats-action__button-continue']"
+
+    class BagsSelection:
+        BAGS_CARD_CONTAINER = "bags-bag-card"
+        BUTTON_CONTINUE_CONTAINER = "bags-continue-flow-container"
+        BUTTON_CONTINUE = "button.ry-button--gradient-yellow"
+
+    class Extras:
+        EXTRAS_LIST_CONTAINER = "products-list-container"
+        BUTTON_CONTINUE = "button.ry-button--full.ng-tns-c167-1.ry-button--gradient-yellow.ry-button--large"
+
+    class OverviewSection:
+        PILLARS_CONTAINER = "div.pillars-container__pillars"
+
+
+class PaymentPageLocators:
+    PAYMENT_CONTAINER = "payment-methods"
+    PAYMENT_CARD_NUMBER_CONTAINER = "div._input-container[data-ref='ry-input-label']"
+    PAYMENT_CARD_NUMBER_INPUT = "input.b2"
 
 

@@ -1,4 +1,4 @@
-from behave import then
+from behave import then, step
 from hamcrest import *
 
 
@@ -25,6 +25,14 @@ def step_impl(context, comparator, value):
         assert_that(shopping_amount, less_than(value))
 
 
-@then("The Login sub-section is shown")
+@then("The Profile Name is shown in the top bar with the name \"{name}\"")
+def step_impl(context, name):
+    assert_that(context.current_page.get_profile_name(), contains_string(name))
+
+
+@then("The selected seat location matches the seat shown in the right panel")
 def step_impl(context):
-    assert_that(context.current_page.is_login_shown(timeout=90), equal_to(True))
+    selected_seat_tooltip_text = context.current_page.get_selected_seat_location()
+    selected_seat_panel_text = context.current_page.get_panel_seat_text()
+    assert_that(selected_seat_panel_text, equal_to_ignoring_case(selected_seat_tooltip_text))
+

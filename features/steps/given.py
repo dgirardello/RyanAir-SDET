@@ -1,14 +1,10 @@
 from behave import given
-from datetime import datetime as DT
+from features.steps.constants import *
 from features.steps.utils import calculate_date
-from features.pages.MainPageClass import MainPage
-from features.pages.TripPageClass import TripPage
-from features.pages.TripSectionFlightsClass import SectionFlights
-
+from features.pages.PageFactory import get_page_object
 
 @given("I'm on the RyanAir homepage")
 def step_impl(context):
-    context.current_page = MainPage(context.driver)
     context.current_page.load_page()
 
 
@@ -77,7 +73,7 @@ def step_impl(context):
     days += cnt * timeframe
     departure_date = calculate_date(days, weekday=flight_params['WEEKDAY'])
 
-    context.current_page = SectionFlights(context.driver)
+    context.current_page = get_page_object(page=PAGE_TRIP, section=PAGE_TRIP_SECTION_FLIGHTS, driver=context.driver)
     context.current_page.load_page(date_out=departure_date, adults=flight_params['ADULTS'],
                                    origin=flight_params['ORIGIN'], destination=flight_params['DESTINATION'])
 
@@ -85,4 +81,7 @@ def step_impl(context):
 @given("I select the \"{fare}\" fare")
 def step_impl(context, fare):
     context.current_page.select_flight_fare(fare=fare)
-    pass
+
+
+
+

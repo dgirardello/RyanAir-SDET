@@ -1,5 +1,9 @@
 from features.pages.BasePageClass import BasePage
 from features.pages.locators import TripPageLocators
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class TripPage(BasePage):
 
@@ -38,14 +42,31 @@ class TripPage(BasePage):
         self.wait_for_css_element(TripPageLocators.FLIGHT_LIST_CONTAINER, timeout=timeout)
 
     def accept_all_cookies(self):
-        if self.get_element_by_id(TripPageLocators.COOKIE_POPUP_ID) is not None:
+        try:
+            WebDriverWait(self.driver, 30).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, TripPageLocators.COOKIE_POPUP)))
+
             btn_accept_cookies = self.get_element_by_css(TripPageLocators.ACCEPT_ALL_COOKIES)
             btn_accept_cookies.click()
+        except:
+            pass
 
     def get_shopping_amount(self):
+        self.wait_for_css_element(TripPageLocators.SHOPPING_CART_AMOUNT_INT)
         int_part = self.get_element_by_css(TripPageLocators.SHOPPING_CART_AMOUNT_INT).text
         dec_part = self.get_element_by_css(TripPageLocators.SHOPPING_CART_AMOUNT_DEC).text
-        return float(".".join([int_part, dec_part]))
+        return float(".".join(map(str, [int_part, dec_part])))
+
+    def show_cart_details(self):
+        self.wait_for_css_element(TripPageLocators.SHOPPING_CART_BUTTON)
+        self.get_element_by_css(TripPageLocators.SHOPPING_CART_BUTTON).click()
+
+    def do_checkout(self):
+        self.wait_for_css_element(TripPageLocators.SHOPPING_CART_DETAILS_CONTAINER)
+        self.wait_for_css_element(TripPageLocators.SHOPPING_CART_DETAILS_CHECKOUT_BUTTON)
+        self.get_element_by_css(TripPageLocators.SHOPPING_CART_DETAILS_CHECKOUT_BUTTON).click()
+
+
 
 
 
