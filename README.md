@@ -1,5 +1,13 @@
 # RyanAir-SDET
 
+This is a simple Use Case to test booking a flight with RyanAir and validate the error given  when using an invalid credit card.
+
+For this exercise I choose Python as a development language, since I'm familiar with the language and I wish to continue exploring it.
+
+After choosing the language choosing the test framework was easy, Behave ann extremely versatile framework for testing using Cucumer and it has a built in integration with Selenium.
+
+I have used Behave in the past for Rest API testing, but is the first time I had the opportunity to use with Selenium and I was pleasantly surprised on how easy it was the integration.  
+
 ## Requirements
 - Python3
 - Pip3
