@@ -1,5 +1,5 @@
 @booking
-Feature: Execute a booking
+Feature: Execute a flight booking booking, with an invalid payment at the end
 
   @flight_search @Page.MAIN
   Scenario: Search for a fight
@@ -77,7 +77,7 @@ Feature: Execute a booking
     Then  The Contact Details and Payment page is shown
 
   @flight_select_payment @error @invalid_card  @Page.PAYMENT
-  Scenario: Start Flight checkout
+  Scenario: Set Insurance and payment options with an invalid credit card
     Given The Contact Details and Payment page is shown
     And   In the Insurance form I select "Insurance Plus"
     And   In the Payment page I scroll to Payment options

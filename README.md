@@ -29,9 +29,9 @@ behave features/
 This will execute the test scenarios and at the end of the test run summary will be shown    
 ```commandline
 1 feature passed, 0 failed, 0 skipped
-8 scenarios passed, 0 failed, 0 skipped
-34 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m53.248s
+10 scenarios passed, 0 failed, 0 skipped
+57 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 1m20.671s
 ```
 
 ## Output
@@ -44,9 +44,10 @@ This will print a dot for every scenario executed (or an F if the scenario has f
 ```commandline
 features/booking.feature  ........
 1 feature passed, 0 failed, 0 skipped
-8 scenarios passed, 0 failed, 0 skipped
-34 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m50.237s
+10 scenarios passed, 0 failed, 0 skipped
+57 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 1m19.434s
+
 
 ```
 To which output format are available execute
