@@ -4,8 +4,12 @@ from features.pages.PageFactory import get_page_object
 
 
 @when("I click on the Search button")
-def step_impl(conetxt):
-    conetxt.current_page.search_flight()
+def step_impl(context):
+    context.current_page.search_flight()
+    context.current_page = get_page_object(page=PAGE_TRIP,
+                                           section=PAGE_TRIP_SECTION_FLIGHTS,
+                                           driver=context.driver)
+
 
 
 @when("I wait until the Trip page is loaded")
@@ -69,4 +73,18 @@ def step_impl(context):
 
 @when("I Click on the Checkout button")
 def step_impl(context):
-    context.current_page.show_cart_details()
+    context.current_page.do_checkout()
+    context.current_page = get_page_object(page=PAGE_PAYMENT,
+                                           driver=context.driver)
+
+
+@when("I accept the payment conditions")
+def step_impl(context):
+    context.current_page.accept_terms()
+
+
+@when("I click on the Payment \"{button}\" button")
+def step_impl(context, button):
+    if 'PAY NOW' in str(button).upper():
+        context.current_page.pay_now()
+

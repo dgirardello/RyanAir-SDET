@@ -82,8 +82,31 @@ class TripPageLocators:
 
 
 class PaymentPageLocators:
+    CONTACT_DETAILS_CONTAINER = "contact-details"
+    INSURANCE_CONTAINER = "div.insurance__content-description"
+    INSURANCE_PLUS_CHECK = "ry-checkbox.ry-checkbox--rounded[inputid='insurance-opt-in']"
+    INSURANCE_NO_CHECK = "ry-checkbox.ry-checkbox--rounded[inputid='insurance-opt-out']"
     PAYMENT_CONTAINER = "payment-methods"
-    PAYMENT_CARD_NUMBER_CONTAINER = "div._input-container[data-ref='ry-input-label']"
-    PAYMENT_CARD_NUMBER_INPUT = "input.b2"
+    PAYMENT_INPUT = "input.b2"
+    DROPDOWN_CONTAINER = "div.select"
+    DROPDOWN_BUTTON = "button.dropdown__toggle.b2"
+    DROPDOWN_ITEMS = "ry-dropdown-item"
+    PAYMENT_CARD_FORM_CONTAINER = "card-details"
+    PAYMENT_CARD_NUMBER_CONTAINER = "ry-input-d.modal__input[data-ref='add-card-modal__account-number']"
+    PAYMENT_CARD_EXPIRE_CONTAINER = "expiry-date"
+    PAYMENT_CARD_CVV_CONTAINER = "verification-code"
+    PAYMENT_CARD_NAME_CONTAINER = "ry-input-d.ng-pristine[formcontrolname='accountName']"
+    PAYMENT_CARD_ADDRESS_FORM_CONTAINER = "address-form"
+    PAYMENT_CARD_ADDRESS_LINE1_CONTAINER = "ry-input-d.address-form__input[data-ref='add-card-modal__address-line-1']"
+    PAYMENT_CARD_ADDRESS_CITY_CONTAINER = "ry-input-d.address-form__input[data-ref='add-card-modal__city']"
+    PAYMENT_CARD_ADDRESS_COUNTRY_CONTAINER = "ry-autocomplete.address-form__input[formcontrolname='country']"
+    PAYMENT_CARD_ADDRESS_COUNTRY_LABEL = "label._label--dropdown"
+    PAYMENT_CARD_ADDRESS_POSTCODE_CONTAINER = "ry-input-d.address-form__shrinked-field[formcontrolname='postcode']"
+    PAYMENT_PAY_NOW_BUTTON = "button.pay-button.ry-button--gradient-yellow"
+    PAYMENT_ACCEPT_CONDITIONS = "ry-checkbox.terms-and-conditions__checkbox"
+    PAYMENT_ERROR_CONTAINER = "div.payment-methods__error-message.ng-star-inserted"
+
+
+
 
 

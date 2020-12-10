@@ -2,13 +2,14 @@ from behave import given
 from features.steps.constants import *
 from features.steps.utils import calculate_date
 from features.pages.PageFactory import get_page_object
+import re
 
 @given("I'm on the RyanAir homepage")
 def step_impl(context):
     context.current_page.load_page()
 
 
-@given("I accept all the cookies if the Cookies Popup is shown")
+@given("I accept all the cookies if the Cookies Popup is shown in the Main page")
 def step_impl(context):
     context.current_page.accept_all_cookies()
 
@@ -83,5 +84,25 @@ def step_impl(context, fare):
     context.current_page.select_flight_fare(fare=fare)
 
 
+@given("In the Insurance form I select \"{insurance}\"")
+def step_impl(context, insurance):
+    context.current_page.select_insurance(insurance)
 
+
+@given("In the Payment page I scroll to {section}")
+def step_impl(context, section):
+    context.current_page.go_to(section)
+
+
+@given("In the payment form I type \"{value}\" in the {input_field} field")
+def step_impl(context, value, input_field):
+    context.current_page.type_in_field(input_field, value)
+
+
+@given("In the payment form I select \"{value}\" in the {dropdown_field} dropdown")
+def step_impl(context, value, dropdown_field):
+    if re.search(r'Month', dropdown_field, re.IGNORECASE):
+        context.current_page.set_dropdown_date(month=value)
+    elif re.search(r'Year', dropdown_field, re.IGNORECASE):
+        context.current_page.set_dropdown_date(year=value)
 

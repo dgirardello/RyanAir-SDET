@@ -1,7 +1,7 @@
 from features.pages.BasePageClass import BasePage
 from features.pages.locators import MainPageLocators
 from selenium.common.exceptions import StaleElementReferenceException
-import time
+from time import sleep
 
 
 class MainPage(BasePage):
@@ -67,11 +67,18 @@ class MainPage(BasePage):
     def open_calendar(self, departure=True):
         self.get_departure_selector(departure=departure).click()
 
-    def set_date(self, date, departure=True):
+    def set_date(self, date, departure=True, stale_elements_retry=5):
         self.open_calendar(departure=departure)
-        locator = MainPageLocators.DEPARTURE_CALENDAR_DATE.format(date)
-        self.wait_for_element_clickable(locator)
-        self.get_element_by_css(locator).click()
+        for i in range(stale_elements_retry):
+            try:
+                locator = MainPageLocators.DEPARTURE_CALENDAR_DATE.format(date)
+                self.wait_for_css_element(locator)
+                self.get_element_by_css(locator).click()
+            except StaleElementReferenceException:
+                sleep(2)
+            else:
+                break
 
     def search_flight(self):
+        self.wait_for_css_element(MainPageLocators.SEARCH_BUTTON)
         self.get_element_by_css(MainPageLocators.SEARCH_BUTTON).click()

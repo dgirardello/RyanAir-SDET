@@ -36,3 +36,12 @@ def step_impl(context):
     selected_seat_panel_text = context.current_page.get_panel_seat_text()
     assert_that(selected_seat_panel_text, equal_to_ignoring_case(selected_seat_tooltip_text))
 
+
+@then("In the Payment form an error is sown")
+def step_impl(context):
+    assert_that(context.current_page.is_error_present(), equal_to(True), "No error message is present")
+
+
+@then("In the payment form the error message reads \"{message}\"")
+def step_impl(context, message):
+    assert_that(context.current_page.get_error_message(), contains_string(message))

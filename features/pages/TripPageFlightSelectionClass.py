@@ -10,6 +10,15 @@ class FlightSelection(TripPage):
     
     def __init__(self, driver):
         TripPage.__init__(self, driver)
+
+    def is_loaded(self):
+        try:
+            WebDriverWait(self.driver, 90).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, TPL.FlightSelection.DATE_CAROUSEL_CONTAINER)))
+        except TimeoutException:
+            return False
+        else:
+            return True
         
     def get_flights(self):
         return self.get_element_list_by_css(TPL.FlightSelection.FLIGHT_LIST_ITEMS)
